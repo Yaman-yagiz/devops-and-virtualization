@@ -19,18 +19,44 @@ This project provides automated installation and management of Nginx and Apache 
 
 ## Installation Steps
 
-1. **Update the Inventory File**  
+1. **Update the Inventory File**   
    Open the `inventory.ini` file and update it with your virtual machine's IP address and username in the following format:
    ```ini
    [webservers]
    your_vm_ip_address ansible_ssh_user=your_username
 
-- Nginx Installation To install Nginx, run the following command:
-  - ansible-playbook -i inventory.ini install_nginx.yml
-- Apache Installation To install Apache, run the following command:
-  - ansible-playbook -i inventory.ini install_apache.yml
-- Stopping Nginx Service To stop the Nginx service, run the following command:
-  - ansible-playbook -i inventory.ini stop_nginx.yml
-- Stopping Apache Service To stop the Apache service, run the following command:
-  - ansible-playbook -i inventory.ini stop_apache.yml
+2. **Run the ansible-playbook**   
+   - Running the Playbook for Nginx, run the following command:
+      ```ini
+      ansible-playbook -i inventory.ini install_nginx.yml
+      
+   - Running the Playbook for Apache, run the following command:
+      ```ini
+      ansible-playbook -i inventory.ini install_apache.yml
+
+      
+3. **Checking**   
+   Go to the address below:
+   ```ini
+   http://your_vm_ip_address
+
+If everything worked correctly, you should see the default welcome page of Nginx or Apache.
+
+4. **Control webserver status**
+   - Nginx:
+       ```ini
+      sudo sysystemctl status nginx
+   - Apache:
+       ```ini
+      sudo sysystemctl status apache2
+
+5. **Stop Services**   
+   To stop running services:
+   - Nginx:
+       ```ini
+      ansible-playbook -i inventory.ini stop_nginx.yml
+   - Apache:
+       ```ini
+      ansible-playbook -i inventory.ini stop_apache.yml
+
 

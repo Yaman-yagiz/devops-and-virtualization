@@ -1,0 +1,9 @@
+---
+- name: Stop Apache on Ubuntu
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Stop Apache
+      service:
+        name: apache2
+        state: stopped
